@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { FilmsActionTypes } from "../../types/films";
 
 export interface Film {
-  id: number;
+  id: string;
   title: string;
   episode: number;
   director: string;
@@ -32,13 +32,18 @@ export type FilmsAction =
 export const getFilms = () => async (dispatch: Dispatch<FilmsAction>) => {
   dispatch({ type: FilmsActionTypes.GET_FILMS });
   try {
-    const { data } = await axios.get("/films");
+    const {
+      data: { results },
+    } = await axios.get("/films");
 
-    const payload: Film[] = data.results.map((film: any) => {
+    const payload: Film[] = results.map((film: any) => {
+      // el episode_id es el n° de episodio, no el id del film, por lo que lo extraigo de la url
+      const urlParts = film.url.split("/");
+      const id = urlParts[urlParts.length - 2];
       return {
-        id: film.episode_id,
+        id,
         title: film.title,
-        episode: film.episode_id, //OJO! cambiar esto más tarde ya que episode_id es solo el id del ep, no el n° de ep
+        episode: film.episode_id,
         director: film.director,
         characters: film.characters,
       };
