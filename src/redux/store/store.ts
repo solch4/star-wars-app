@@ -7,3 +7,6 @@ export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+// Inferred type: { films: FilmsState }
+export type AppDispatch = typeof store.dispatch
