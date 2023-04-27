@@ -1,5 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { State } from "../redux";
 import { getFilms } from "../redux/actions/films";
@@ -23,6 +24,9 @@ const Films = () => {
           <h2>{film.title}</h2>
           <p>Episode #{film.episode}</p>
           <p>Director: {film.director}</p>
+          <Link to={`/${film.id}/characters`}>
+            See characters
+          </Link>
         </Fragment>
       ))}
     </>

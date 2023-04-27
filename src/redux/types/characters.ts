@@ -1,0 +1,5 @@
+export enum CharactersActionTypes {
+  GET_CHARACTERS,
+  GET_CHARACTERS_SUCCESS,
+  GET_CHARACTERS_ERROR
+}
