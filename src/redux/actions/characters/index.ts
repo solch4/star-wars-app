@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 import { CharactersActionTypes } from "../../types/characters";
+import { ApiFilm } from "../films";
 
 export interface Character {
   id: string;
@@ -20,7 +21,7 @@ interface GetCharactersSuccessAction {
 
 interface GetCharactersErrorAction {
   type: CharactersActionTypes.GET_CHARACTERS_ERROR;
-  payload: any;
+  payload: string;
 }
 
 export type CharactersAction =
@@ -28,17 +29,35 @@ export type CharactersAction =
   | GetCharactersSuccessAction
   | GetCharactersErrorAction;
 
+interface ApiCharacter {
+  name: string;
+  height: string;
+  mass: string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
+  homeworld: string;
+  films: string[];
+  species: string[];
+  vehicles: string[];
+  starships: string[];
+  created: Date;
+  edited: Date;
+  url: string;
+}
+
 export const getCharacters =
   (filmId: string | undefined) =>
   async (dispatch: Dispatch<CharactersAction>) => {
     dispatch({ type: CharactersActionTypes.GET_CHARACTERS });
     try {
-      const { data } = await axios.get(`/films/${filmId}`);
+      const { data } = await axios.get<ApiFilm>(`/films/${filmId}`);
 
       const characters: Character[] = [];
-      
       for (const character of data.characters) {
-        const { data } = await axios.get(character);
+        const { data } = await axios.get<ApiCharacter>(character);
         characters.push({
           id: data.url,
           name: data.name,
@@ -51,11 +70,13 @@ export const getCharacters =
         type: CharactersActionTypes.GET_CHARACTERS_SUCCESS,
         payload: characters,
       });
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       dispatch({
         type: CharactersActionTypes.GET_CHARACTERS_ERROR,
-        payload: error,
+        payload: error.response?.data.message
+        ? error.response.data.message
+        : error.message,
       });
     }
   };

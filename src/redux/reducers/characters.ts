@@ -31,7 +31,7 @@ const charactersReducer = (state = initialState, action: CharactersAction) => {
       return {
         ...state,
         loading: false,
-        error: "Error fetching characters",
+        error: action.payload,
       };
     default:
       return state;

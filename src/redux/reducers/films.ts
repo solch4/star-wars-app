@@ -31,7 +31,7 @@ const filmsReducer = (state = initialState, action: FilmsAction) => {
       return {
         ...state,
         loading: false,
-        error: "Error fetching films",
+        error: action.payload,
       };
     default:
       return state;
