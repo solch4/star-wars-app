@@ -1,9 +1,9 @@
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { State } from "../redux";
 import { getFilms } from "../redux/actions/films";
+import FilmCard from "../components/FilmCard";
 
 const Films = () => {
   const dispatch = useAppDispatch();
@@ -19,16 +19,8 @@ const Films = () => {
   return (
     <>
       <h1>Films</h1>
-      {films.map((film) => (
-        <Fragment key={film.id}>
-          <h2>{film.title}</h2>
-          <p>Episode #{film.episode}</p>
-          <p>Director: {film.director}</p>
-          <Link to={`/${film.id}/characters`}>
-            See characters
-          </Link>
-        </Fragment>
-      ))}
+      {films.length &&
+        films.map((film) => <FilmCard key={film.id} {...film} />)}
     </>
   );
 };
