@@ -24,10 +24,22 @@ interface GetCharactersErrorAction {
   payload: string;
 }
 
+interface GetEyeColorsSuccessAction {
+  type: CharactersActionTypes.GET_EYE_COLORS_SUCCESS;
+  payload: string[];
+}
+
+interface GetGenderSuccessAction {
+  type: CharactersActionTypes.GET_GENDERS_SUCCESS;
+  payload: string[];
+}
+
 export type CharactersAction =
   | GetCharactersAction
   | GetCharactersSuccessAction
-  | GetCharactersErrorAction;
+  | GetCharactersErrorAction
+  | GetEyeColorsSuccessAction
+  | GetGenderSuccessAction;
 
 interface ApiCharacter {
   name: string;
@@ -48,35 +60,60 @@ interface ApiCharacter {
   url: string;
 }
 
+const getCharacter = async (characterUrl: string): Promise<Character> => {
+  const { data } = await axios.get<ApiCharacter>(characterUrl);
+  return {
+    id: data.url,
+    name: data.name,
+    eyeColor: data.eye_color,
+    gender: data.gender,
+  };
+};
+
+const getCharacterList = async (filmId: string | undefined) => {
+  const { data } = await axios.get<ApiFilm>(`/films/${filmId}`);
+
+  const characterUrls = data.characters;
+  const characterPromises = characterUrls.map((url) => getCharacter(url));
+
+  return Promise.all(characterPromises);
+};
+
+const getUniqueValues = (list: Character[], key: keyof Character): string[] => {
+  const valueSet = new Set(list.map((item) => item[key]));
+  return [...valueSet];
+};
+
 export const getCharacters =
   (filmId: string | undefined) =>
   async (dispatch: Dispatch<CharactersAction>) => {
     dispatch({ type: CharactersActionTypes.GET_CHARACTERS });
     try {
-      const { data } = await axios.get<ApiFilm>(`/films/${filmId}`);
-
-      const characters: Character[] = [];
-      for (const character of data.characters) {
-        const { data } = await axios.get<ApiCharacter>(character);
-        characters.push({
-          id: data.url,
-          name: data.name,
-          eyeColor: data.eye_color,
-          gender: data.gender,
-        });
-      }
+      const characters = await getCharacterList(filmId);
+      const genders = getUniqueValues(characters, "gender");
+      const eyeColors = getUniqueValues(characters, "eyeColor");
 
       dispatch({
         type: CharactersActionTypes.GET_CHARACTERS_SUCCESS,
         payload: characters,
+      });
+
+      dispatch({
+        type: CharactersActionTypes.GET_EYE_COLORS_SUCCESS,
+        payload: eyeColors,
+      });
+
+      dispatch({
+        type: CharactersActionTypes.GET_GENDERS_SUCCESS,
+        payload: genders,
       });
     } catch (error: any) {
       console.log(error);
       dispatch({
         type: CharactersActionTypes.GET_CHARACTERS_ERROR,
         payload: error.response?.data.message
-        ? error.response.data.message
-        : error.message,
+          ? error.response.data.message
+          : error.message,
       });
     }
   };

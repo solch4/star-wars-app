@@ -3,12 +3,16 @@ import { CharactersActionTypes } from "../types/characters";
 
 interface initialStateI {
   characters: Character[];
+  eyeColors: string[];
+  genders: string[];
   loading: boolean;
   error: string;
 }
 
 const initialState: initialStateI = {
   characters: [],
+  eyeColors: [],
+  genders: [],
   loading: false,
   error: "",
 };
@@ -32,6 +36,16 @@ const charactersReducer = (state = initialState, action: CharactersAction) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+    case CharactersActionTypes.GET_GENDERS_SUCCESS:
+      return {
+        ...state,
+        genders: action.payload,
+      };
+    case CharactersActionTypes.GET_EYE_COLORS_SUCCESS:
+      return {
+        ...state,
+        eyeColors: action.payload,
       };
     default:
       return state;
