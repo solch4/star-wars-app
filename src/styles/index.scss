@@ -2,9 +2,9 @@
 @import "./abstracts/variables", "./abstracts/mixins";
 
 /* base */
-@import "./base/normalize", "./base/base", "./base/helpers";
+@import "./base/normalize", "./base/helpers", "./base/base";
 
 /* components */
-@import "./components/Layout";
+@import "./components/Layout", "./components/Header";
 
 /* pages */

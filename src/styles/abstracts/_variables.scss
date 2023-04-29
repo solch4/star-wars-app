@@ -34,15 +34,18 @@ $clr-neutral-200: #b8bbc7;
 $clr-neutral-100: #d4d6dd;
 $clr-neutral-50: #f1f1f4;
 
+/* fonts */
+
 /* font-sizes */
 $text-2xl: clamp(2.441rem, 5.5vw, 3.052rem);
 $text-xl: clamp(1.953rem, 3vw, 2.441rem);
 $text-lg: clamp(1.563rem, 2.5vw, 1.953rem);
 $text-base: 1rem;
-
 /* font-families */
 $ff-title: "Bebas Neue", cursive;
 $ff-body: "Nunito", sans-serif;
+/* spacing */
+$letter-spacing-1: 0.1em;
 
 /* breakponts */
 $breakpoints: (

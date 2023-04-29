@@ -1,0 +1,18 @@
+.header {
+  background-color: $clr-primary-900;
+  padding: 1.5rem 2rem;
+
+  h1 {
+    font-size: $text-lg;
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @include respond-to(md) {
+    padding: 2rem 4rem;
+  }
+}

@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
-      <h1>
-        <Link to="/">Star Wars App</Link>
-      </h1>
+    <header className="header">
+      <div className="container">
+        <h1>
+          <Link to="/">Star Wars App</Link>
+        </h1>
+      </div>
     </header>
   );
 };
