@@ -1,0 +1,11 @@
+.layout {
+  max-width: $max-width;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  @include respond-to(md) {
+    gap: 2.5rem;
+    padding: 4rem;
+  }
+}

@@ -1,8 +1,10 @@
 /* abstracts */
-@import "./abstracts/variables";
+@import "./abstracts/variables", "./abstracts/mixins";
 
 /* base */
 @import "./base/normalize", "./base/base";
 
 /* components */
+@import "./components/Layout";
+
 /* pages */
