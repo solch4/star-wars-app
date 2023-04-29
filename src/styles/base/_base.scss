@@ -1,0 +1,19 @@
+body {
+  background-color: $clr-primary-900;
+  color: $clr-primary-50;
+  font-family: $ff-body;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  box-shadow: none;
+  outline: 2px dotted $clr-primary-50;
+  outline-offset: 1px;
+}

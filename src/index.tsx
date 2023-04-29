@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import axios from "axios";
 import App from './App';
 import { store } from './redux/store/store';
 import reportWebVitals from './reportWebVitals';
-import axios from "axios";
+import "./styles/index.scss"
 
 axios.defaults.baseURL = "https://swapi.dev/api";
 
