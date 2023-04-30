@@ -2,8 +2,13 @@
   display: grid;
   gap: 1rem;
   padding: 2rem;
+
   @include respond-to(md) {
     gap: 2.5rem;
     padding: 4rem;
+  }
+
+  h1 {
+    font-size: $text-xl;
   }
 }

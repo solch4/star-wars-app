@@ -1,40 +1,27 @@
-.characters {
+.characters-filters {
   display: grid;
   gap: 1rem;
 
-  @include respond-to(sm) {
-    gap: 2.5rem;
+  h3 {
+    font-size: $text-lg;
   }
 
-  h1 {
-    font-size: $text-xl;
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 1rem;
+    }
   }
 
-  &-filters {
-    display: grid;
-    gap: 1rem;
-
-    h3 {
-      font-size: $text-lg;
-    }
-
-    &-content {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      @include respond-to(sm) {
-        flex-direction: row;
-        align-items: flex-end;
-        gap: 1rem;
-      }
-    }
-
-    &-clear-btn {
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      background-color: $clr-primary-50;
-      color: $clr-primary-900;
-    }
+  &-clear-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: $clr-primary-50;
+    color: $clr-primary-900;
   }
 }

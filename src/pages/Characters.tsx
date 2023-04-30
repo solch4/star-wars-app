@@ -53,7 +53,7 @@ const Characters = () => {
   });
 
   return (
-    <div className="characters">
+    <>
       <h1>Characters in {filmTitle}</h1>
       <div className="characters-filters">
         <h3>Filters</h3>
@@ -87,7 +87,7 @@ const Characters = () => {
           <p>No characters found</p>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
