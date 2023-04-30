@@ -71,13 +71,15 @@ const Characters = () => {
         />
         <button onClick={handleClearFilters}>Clear filters</button>
       </div>
-      {filteredCharacters.length ? (
-        filteredCharacters.map((character) => (
-          <CharacterCard key={character.id} {...character} />
-        ))
-      ) : (
-        <p>No characters found</p>
-      )}
+      <div className="cards">
+        {filteredCharacters.length ? (
+          filteredCharacters.map((character) => (
+            <CharacterCard key={character.id} {...character} />
+          ))
+        ) : (
+          <p>No characters found</p>
+        )}
+      </div>
     </>
   );
 };

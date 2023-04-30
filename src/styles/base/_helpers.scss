@@ -19,3 +19,42 @@
   font-family: $ff-title;
   letter-spacing: $letter-spacing-1;
 }
+
+.card {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  background-color: $clr-primary-800;
+
+  svg {
+    fill: $clr-primary-50;
+    max-width: 200px;
+  }
+
+  h2 {
+    font-size: $text-xl;
+  }
+
+  &-detail {
+    text-align: start;
+    display: grid;
+    gap: 1rem;
+  }
+
+  @include respond-to(sm) {
+    padding: 2rem 2.5rem;
+  }
+}
+
+.cards {
+  display: grid;
+  gap: 1rem;
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

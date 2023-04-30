@@ -19,8 +19,10 @@ const Films = () => {
   return (
     <>
       <h1>Films</h1>
-      {films.length &&
-        films.map((film) => <FilmCard key={film.id} {...film} />)}
+      <div className="cards">
+        {films.length &&
+          films.map((film) => <FilmCard key={film.id} {...film} />)}
+      </div>
     </>
   );
 };
