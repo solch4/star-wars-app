@@ -10,10 +10,12 @@
   select {
     text-align: center;
     padding: 0.5rem 1rem;
-    border: 0;
     border-radius: 0.5rem;
     background-color: $clr-primary-50;
     color: $clr-primary-900;
-    font-family: inherit;
+
+    @include respond-to(sm) {
+      text-align: start;
+    }
   }
 }

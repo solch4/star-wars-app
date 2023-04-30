@@ -55,21 +55,28 @@ const Characters = () => {
   return (
     <>
       <h1>Characters</h1>
-      <div>
-        <p>Filters:</p>
-        <FilterDropdown
-          label="Gender"
-          options={genders}
-          value={selectedGender}
-          onChange={(e: SelectElement) => setSelectedGender(e.target.value)}
-        />
-        <FilterDropdown
-          label="Eye color"
-          options={eyeColors}
-          value={selectedEyeColor}
-          onChange={(e: SelectElement) => setSelectedEyeColor(e.target.value)}
-        />
-        <button onClick={handleClearFilters}>Clear filters</button>
+      <div className="characters-filters">
+        <h3>Filters</h3>
+        <div className="characters-filters-content">
+          <FilterDropdown
+            label="Gender"
+            options={genders}
+            value={selectedGender}
+            onChange={(e: SelectElement) => setSelectedGender(e.target.value)}
+          />
+          <FilterDropdown
+            label="Eye color"
+            options={eyeColors}
+            value={selectedEyeColor}
+            onChange={(e: SelectElement) => setSelectedEyeColor(e.target.value)}
+          />
+          <button
+            className="characters-filters-clear-btn"
+            onClick={handleClearFilters}
+          >
+            Clear filters
+          </button>
+        </div>
       </div>
       <div className="cards">
         {filteredCharacters.length ? (

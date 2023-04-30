@@ -26,3 +26,10 @@ h5,
 h6 {
   @extend .heading;
 }
+
+button,
+select {
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
