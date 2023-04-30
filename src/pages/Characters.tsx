@@ -12,7 +12,7 @@ type SelectElement = ChangeEvent<HTMLSelectElement>;
 const Characters = () => {
   const { filmId } = useParams();
   const dispatch = useAppDispatch();
-  const { characters, error, loading, genders, eyeColors } = useSelector(
+  const { characters, error, loading, genders, eyeColors, filmTitle } = useSelector(
     (state: State) => state.characters
   );
 
@@ -53,8 +53,8 @@ const Characters = () => {
   });
 
   return (
-    <>
-      <h1>Characters</h1>
+    <div className="characters">
+      <h1>Characters in {filmTitle}</h1>
       <div className="characters-filters">
         <h3>Filters</h3>
         <div className="characters-filters-content">
@@ -87,7 +87,7 @@ const Characters = () => {
           <p>No characters found</p>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

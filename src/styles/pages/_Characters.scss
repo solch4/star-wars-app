@@ -1,27 +1,40 @@
-.characters-filters {
+.characters {
   display: grid;
   gap: 1rem;
 
-  h3 {
-    font-size: $text-lg;
+  @include respond-to(sm) {
+    gap: 2.5rem;
   }
 
-  &-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    
-    @include respond-to(sm) {
-      flex-direction: row;
-      align-items: flex-end;
-      gap: 1rem;
+  h1 {
+    font-size: $text-xl;
+  }
+
+  &-filters {
+    display: grid;
+    gap: 1rem;
+
+    h3 {
+      font-size: $text-lg;
     }
-  }
 
-  &-clear-btn {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    background-color: $clr-primary-50;
-    color: $clr-primary-900;
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      @include respond-to(sm) {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 1rem;
+      }
+    }
+
+    &-clear-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      background-color: $clr-primary-50;
+      color: $clr-primary-900;
+    }
   }
 }
