@@ -5,6 +5,7 @@ interface initialStateI {
   characters: Character[];
   eyeColors: string[];
   genders: string[];
+  filmTitle: string;
   loading: boolean;
   error: string;
 }
@@ -13,6 +14,7 @@ const initialState: initialStateI = {
   characters: [],
   eyeColors: [],
   genders: [],
+  filmTitle: "",
   loading: false,
   error: "",
 };
@@ -46,6 +48,11 @@ const charactersReducer = (state = initialState, action: CharactersAction) => {
       return {
         ...state,
         eyeColors: action.payload,
+      };
+    case CharactersActionTypes.GET_FTLM_TITLE_SUCCESS:
+      return {
+        ...state,
+        filmTitle: action.payload,
       };
     default:
       return state;

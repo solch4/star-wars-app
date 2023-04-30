@@ -34,12 +34,18 @@ interface GetGenderSuccessAction {
   payload: string[];
 }
 
+interface GetFilmTitleSuccessAction {
+  type: CharactersActionTypes.GET_FTLM_TITLE_SUCCESS;
+  payload: string;
+}
+
 export type CharactersAction =
   | GetCharactersAction
   | GetCharactersSuccessAction
   | GetCharactersErrorAction
   | GetEyeColorsSuccessAction
-  | GetGenderSuccessAction;
+  | GetGenderSuccessAction
+  | GetFilmTitleSuccessAction;
 
 interface ApiCharacter {
   name: string;
@@ -70,15 +76,6 @@ const getCharacter = async (characterUrl: string): Promise<Character> => {
   };
 };
 
-const getCharacterList = async (filmId: string | undefined) => {
-  const { data } = await axios.get<ApiFilm>(`/films/${filmId}`);
-
-  const characterUrls = data.characters;
-  const characterPromises = characterUrls.map((url) => getCharacter(url));
-
-  return Promise.all(characterPromises);
-};
-
 const getUniqueValues = (list: Character[], key: keyof Character): string[] => {
   const valueSet = new Set(list.map((item) => item[key]));
   return [...valueSet];
@@ -89,7 +86,11 @@ export const getCharacters =
   async (dispatch: Dispatch<CharactersAction>) => {
     dispatch({ type: CharactersActionTypes.GET_CHARACTERS });
     try {
-      const characters = await getCharacterList(filmId);
+      const { data } = await axios.get<ApiFilm>(`/films/${filmId}`);
+      const { title: filmTitle, characters: characterUrls } = data;
+      const characterPromises = characterUrls.map((url) => getCharacter(url));
+      const characters = await Promise.all(characterPromises);
+
       const genders = getUniqueValues(characters, "gender");
       const eyeColors = getUniqueValues(characters, "eyeColor");
 
@@ -106,6 +107,11 @@ export const getCharacters =
       dispatch({
         type: CharactersActionTypes.GET_GENDERS_SUCCESS,
         payload: genders,
+      });
+
+      dispatch({
+        type: CharactersActionTypes.GET_FTLM_TITLE_SUCCESS,
+        payload: filmTitle,
       });
     } catch (error: any) {
       console.log(error);
