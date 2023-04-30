@@ -9,11 +9,11 @@ type Props = {
 
 const FilterDropdown = ({ label, options, value, onChange }: Props) => {
   return (
-    <>
+    <div className="filterDropdown">
       <label htmlFor={label}>{label}</label>
       <select onChange={onChange} value={value} id={label}>
         <option value="" disabled>
-          --select {label.toLowerCase()}--
+          -select {label.toLowerCase()}-
         </option>
         <option value="all">All</option>
         {options.map((option) => (
@@ -22,7 +22,7 @@ const FilterDropdown = ({ label, options, value, onChange }: Props) => {
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 
