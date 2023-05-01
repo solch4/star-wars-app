@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faVenusMars } from "@fortawesome/free-solid-svg-icons";
+import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
 
 type Props = {
   id: string;
@@ -27,12 +28,12 @@ const CharacterCard = ({ name, eyeColor, gender }: Props) => {
         <div className="card-detail">
           <FontAwesomeIcon icon={faEye} />
           <span className="sr-only">Eye color:</span>
-          <p>{eyeColor.at(0)?.toUpperCase() + eyeColor.slice(1)}</p>
+          <p>{capitalizeFirstLetter(eyeColor)}</p>
         </div>
         <div className="card-detail">
           <FontAwesomeIcon icon={faVenusMars} />
           <span className="sr-only">Gender:</span>
-          <p>{gender.at(0)?.toUpperCase() + gender.slice(1)}</p>
+          <p>{capitalizeFirstLetter(gender)}</p>
         </div>
       </div>
     </article>

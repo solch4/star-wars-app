@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
 
 type Props = {
   label: string;
@@ -18,7 +19,7 @@ const FilterDropdown = ({ label, options, value, onChange }: Props) => {
         <option value="all">All</option>
         {options.map((option) => (
           <option value={option} key={option}>
-            {option.at(0)?.toUpperCase() + option.slice(1)}
+            {capitalizeFirstLetter(option)}
           </option>
         ))}
       </select>
