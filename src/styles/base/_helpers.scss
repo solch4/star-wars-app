@@ -37,10 +37,16 @@
     font-size: $text-xl;
   }
 
-  &-detail {
+  &-details {
     text-align: start;
     display: grid;
     gap: 1rem;
+  }
+
+  &-detail {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
   }
 
   @include respond-to(sm) {

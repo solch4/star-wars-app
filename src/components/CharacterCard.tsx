@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faVenusMars } from "@fortawesome/free-solid-svg-icons";
+
 type Props = {
   id: string;
   name: string;
@@ -20,9 +23,17 @@ const CharacterCard = ({ name, eyeColor, gender }: Props) => {
         </svg>
       </div>
       <h2>{name}</h2>
-      <div className="card-detail">
-        <p>Eye color: {eyeColor}</p>
-        <p>Gender: {gender}</p>
+      <div className="card-details">
+        <div className="card-detail">
+          <FontAwesomeIcon icon={faEye} />
+          <span className="sr-only">Eye color:</span>
+          <p>{eyeColor.at(0)?.toUpperCase() + eyeColor.slice(1)}</p>
+        </div>
+        <div className="card-detail">
+          <FontAwesomeIcon icon={faVenusMars} />
+          <span className="sr-only">Gender:</span>
+          <p>{gender.at(0)?.toUpperCase() + gender.slice(1)}</p>
+        </div>
       </div>
     </article>
   );

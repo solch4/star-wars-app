@@ -1,4 +1,10 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTape,
+  faVideo,
+  faUserGroup,
+} from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   id: string;
@@ -22,10 +28,20 @@ const FilmCard = ({ id, title, episode, director }: Props) => {
         </svg>
       </div>
       <h2>{title}</h2>
-      <div className="card-detail">
-        <p>Episode #{episode}</p>
-        <p>Director: {director}</p>
-        <Link to={`/${id}`}>See characters</Link>
+      <div className="card-details">
+        <div className="card-detail">
+          <FontAwesomeIcon icon={faTape} />
+          <p>Episode #{episode}</p>
+        </div>
+        <div className="card-detail">
+          <FontAwesomeIcon icon={faVideo} />
+          <span className="sr-only">Directed by</span>
+          <p>{director}</p>
+        </div>
+        <div className="card-detail">
+          <FontAwesomeIcon icon={faUserGroup} />
+          <Link to={`/${id}`}>See characters</Link>
+        </div>
       </div>
     </article>
   );
