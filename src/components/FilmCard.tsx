@@ -5,6 +5,7 @@ import {
   faVideo,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
+import { toRoman } from "roman-numerals";
 
 type Props = {
   id: string;
@@ -31,7 +32,7 @@ const FilmCard = ({ id, title, episode, director }: Props) => {
       <div className="card-details">
         <div className="card-detail">
           <FontAwesomeIcon icon={faTape} />
-          <p>Episode #{episode}</p>
+          <p>Episode {toRoman(episode)}</p>
         </div>
         <div className="card-detail">
           <FontAwesomeIcon icon={faVideo} />
