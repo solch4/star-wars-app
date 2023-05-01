@@ -1,13 +1,6 @@
-import { Film, FilmsAction } from "../actions/films";
-import { FilmsActionTypes } from "../types/films";
+import { FilmsAction, FilmsActionTypes, FilmsState } from "../types/filmsTypes";
 
-interface initialStateI {
-  films: Film[];
-  loading: boolean;
-  error: string;
-}
-
-const initialState: initialStateI = {
+const initialState: FilmsState = {
   films: [],
   loading: false,
   error: "",

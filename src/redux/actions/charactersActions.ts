@@ -1,70 +1,12 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { CharactersActionTypes } from "../../types/characters";
-import { ApiFilm } from "../films";
-
-export interface Character {
-  id: string;
-  name: string;
-  eyeColor: string;
-  gender: string;
-}
-
-interface GetCharactersAction {
-  type: CharactersActionTypes.GET_CHARACTERS;
-}
-
-interface GetCharactersSuccessAction {
-  type: CharactersActionTypes.GET_CHARACTERS_SUCCESS;
-  payload: Character[];
-}
-
-interface GetCharactersErrorAction {
-  type: CharactersActionTypes.GET_CHARACTERS_ERROR;
-  payload: string;
-}
-
-interface GetEyeColorsSuccessAction {
-  type: CharactersActionTypes.GET_EYE_COLORS_SUCCESS;
-  payload: string[];
-}
-
-interface GetGenderSuccessAction {
-  type: CharactersActionTypes.GET_GENDERS_SUCCESS;
-  payload: string[];
-}
-
-interface GetFilmTitleSuccessAction {
-  type: CharactersActionTypes.GET_FTLM_TITLE_SUCCESS;
-  payload: string;
-}
-
-export type CharactersAction =
-  | GetCharactersAction
-  | GetCharactersSuccessAction
-  | GetCharactersErrorAction
-  | GetEyeColorsSuccessAction
-  | GetGenderSuccessAction
-  | GetFilmTitleSuccessAction;
-
-interface ApiCharacter {
-  name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: string;
-  homeworld: string;
-  films: string[];
-  species: string[];
-  vehicles: string[];
-  starships: string[];
-  created: Date;
-  edited: Date;
-  url: string;
-}
+import {
+  ApiCharacter,
+  Character,
+  CharactersAction,
+  CharactersActionTypes,
+} from "../types/charactersTypes";
+import { ApiFilm } from "../types/filmsTypes";
 
 const getCharacter = async (characterUrl: string): Promise<Character> => {
   const { data } = await axios.get<ApiCharacter>(characterUrl);

@@ -1,50 +1,11 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { FilmsActionTypes } from "../../types/films";
-
-export interface Film {
-  id: string;
-  title: string;
-  episode: number;
-  director: string;
-  characters: string[];
-}
-
-interface GetFilmsAction {
-  type: FilmsActionTypes.GET_FILMS;
-}
-
-interface GetFilmsSuccessAction {
-  type: FilmsActionTypes.GET_FILMS_SUCCESS;
-  payload: Film[];
-}
-
-interface GetFilmsErrorAction {
-  type: FilmsActionTypes.GET_FILMS_ERROR;
-  payload: string;
-}
-
-export type FilmsAction =
-  | GetFilmsAction
-  | GetFilmsSuccessAction
-  | GetFilmsErrorAction;
-
-export interface ApiFilm {
-  title: string;
-  episode_id: number;
-  opening_crawl: string;
-  director: string;
-  producer: string;
-  release_date: string;
-  characters: string[];
-  planets: string[];
-  starships: string[];
-  vehicles: string[];
-  species: string[];
-  created: Date;
-  edited: Date;
-  url: string;
-}
+import {
+  ApiFilm,
+  Film,
+  FilmsAction,
+  FilmsActionTypes,
+} from "../types/filmsTypes";
 
 export const getFilms = () => async (dispatch: Dispatch<FilmsAction>) => {
   dispatch({ type: FilmsActionTypes.GET_FILMS });

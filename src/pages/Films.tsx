@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { State } from "../redux";
-import { getFilms } from "../redux/actions/films";
+import { getFilms } from "../redux/actions/filmsActions";
 import FilmCard from "../components/FilmCard";
 
 const Films = () => {

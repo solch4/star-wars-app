@@ -2,7 +2,7 @@ import { useEffect, ChangeEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../hooks/useAppDispatch";
-import { getCharacters } from "../redux/actions/characters";
+import { getCharacters } from "../redux/actions/charactersActions";
 import { State } from "../redux";
 import CharacterCard from "../components/CharacterCard";
 import FilterDropdown from "../components/FilterDropdown";

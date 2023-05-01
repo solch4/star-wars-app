@@ -1,16 +1,6 @@
-import { Character, CharactersAction } from "../actions/characters";
-import { CharactersActionTypes } from "../types/characters";
+import { CharactersAction, CharactersActionTypes, CharactersState } from "../types/charactersTypes";
 
-interface initialStateI {
-  characters: Character[];
-  eyeColors: string[];
-  genders: string[];
-  filmTitle: string;
-  loading: boolean;
-  error: string;
-}
-
-const initialState: initialStateI = {
+const initialState: CharactersState = {
   characters: [],
   eyeColors: [],
   genders: [],
