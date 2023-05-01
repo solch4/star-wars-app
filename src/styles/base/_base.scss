@@ -1,5 +1,5 @@
 body {
-  background: url("../../../public/assets/galaxy.jpg") fixed center/cover;
+  background: $clr-primary-900 url("../../../public/assets/galaxy.jpg") fixed center/cover;
   color: $clr-primary-50;
   font-family: $ff-body;
 }
