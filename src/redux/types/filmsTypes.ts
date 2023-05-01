@@ -9,7 +9,6 @@ export interface Film {
   title: string;
   episode: number;
   director: string;
-  characters: string[];
 }
 
 export interface ApiFilm {

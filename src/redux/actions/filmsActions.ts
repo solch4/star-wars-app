@@ -23,7 +23,6 @@ export const getFilms = () => async (dispatch: Dispatch<FilmsAction>) => {
         title: film.title,
         episode: film.episode_id,
         director: film.director,
-        characters: film.characters,
       };
     });
 
