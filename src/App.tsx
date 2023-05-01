@@ -5,6 +5,7 @@ import Spinner from "./components/Spinner";
 
 const Films = lazy(() => import("./pages/Films"));
 const Characters = lazy(() => import("./pages/Characters"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Films />} />
             <Route path="/:filmId" element={<Characters />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </Layout>

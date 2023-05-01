@@ -1,0 +1,15 @@
+.notFound {
+  display: grid;
+  gap: 1rem;
+
+  &-image {
+    max-width: 300px;
+    place-self: center;
+    fill: $clr-primary-50;
+  }
+
+  @include respond-to(md) {
+    gap: 1.5rem;
+    text-align: center;
+  }
+}
