@@ -25,7 +25,7 @@ const FilmCard = ({ id, title, episode, director }: Props) => {
       <div className="card-detail">
         <p>Episode #{episode}</p>
         <p>Director: {director}</p>
-        <Link to={`/${id}/characters`}>See characters</Link>
+        <Link to={`/${id}`}>See characters</Link>
       </div>
     </article>
   );
