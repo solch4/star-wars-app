@@ -5,7 +5,7 @@
 @import "./base/normalize", "./base/helpers", "./base/base";
 
 /* components */
-@import "./components/Layout", "./components/Header", "./components/FilterDropdown";
+@import "./components/Layout", "./components/Header", "./components/FilterDropdown", "./components/Spinner";
 
 /* pages */
 @import "./pages/Characters";
