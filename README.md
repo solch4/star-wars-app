@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Star Wars App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta es una aplicación web desarrollada con React que muestra información sobre las películas y los personajes de Star Wars utilizando la [API de SWAPI](https://swapi.dev/). Este proyecto fue desarrollado como parte de un desafío técnico para demostrar mis habilidades en el desarrollo frontend y aspirar a un puesto de trabajo como Frontend Developer.
 
-## Available Scripts
+![star-wars-app](https://github.com/solch4/star-wars-app/assets/101352684/793c709d-ae26-402c-ba4a-87a5abd897b6)
 
-In the project directory, you can run:
+## Características
 
-### `npm start`
+- Muestra información detallada sobre las películas de Star Wars, incluyendo el nombre, número de episodio, director y enlaces a la página de personajes de cada película.
+- Proporciona una lista de personajes con su nombre, color de ojos y género.
+- Permite filtrar los personajes por color de ojos y género.
+- Navegación entre páginas utilizando React Router.
+- Estilos personalizados y responsive para una experiencia de usuario agradable.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tecnologías
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+La aplicación se encuentra desarrollada con TypeScript, React, React Router, Redux y Sass.
 
-### `npm test`
+## Links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Demo: puedes acceder a una demostración en vivo de la aplicación [aquí](https://star-wars-app-solch4.vercel.app/).
+- Diseño: el diseño visual de la aplicación fue creado utilizando Figma. Puedes ver el diseño y los componentes [aquí](https://www.figma.com/file/JlyMRxvGKV6FDq8icXEX9z/Star-wars?node-id=0%3A1&t=nxEknyKJ69JhwtZE-1).
 
-### `npm run build`
+## Instalación
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clona este repositorio en tu máquina local.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`git clone https://github.com/solch4/star-wars-app.git`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Entra al directorio del proyecto.
 
-### `npm run eject`
+`cd star-wars-app`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Instala las dependencias del proyecto.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Inicia la aplicación.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`npm start`
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
