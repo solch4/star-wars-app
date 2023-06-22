@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../hooks/useAppSelector";
 import { useAppDispatch } from "../hooks/useAppDispatch";
-import { State } from "../redux";
 import { getFilms } from "../redux/actions/filmsActions";
 import FilmCard from "../components/FilmCard";
 
 const Films = () => {
   const dispatch = useAppDispatch();
-  const { films, error, loading } = useSelector((state: State) => state.films);
+  const { films, error, loading } = useAppSelector((state) => state.films);
 
   useEffect(() => {
     dispatch(getFilms());

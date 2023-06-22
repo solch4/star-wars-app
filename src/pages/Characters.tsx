@@ -1,9 +1,8 @@
 import { useEffect, ChangeEvent, useState } from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../hooks/useAppSelector";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { getCharacters } from "../redux/actions/charactersActions";
-import { State } from "../redux";
 import CharacterCard from "../components/CharacterCard";
 import FilterDropdown from "../components/FilterDropdown";
 
@@ -12,8 +11,8 @@ type SelectElement = ChangeEvent<HTMLSelectElement>;
 const Characters = () => {
   const { filmId } = useParams();
   const dispatch = useAppDispatch();
-  const { characters, error, loading, genders, eyeColors, filmTitle } = useSelector(
-    (state: State) => state.characters
+  const { characters, error, loading, genders, eyeColors, filmTitle } = useAppSelector(
+    (state) => state.characters
   );
 
   const [selectedGender, setSelectedGender] = useState("");
