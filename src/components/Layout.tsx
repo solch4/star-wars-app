@@ -1,10 +1,10 @@
 import Header from "./Header";
 
-type Props = {
+interface Props {
   children: JSX.Element;
 };
 
-const Layout = ({ children }: Props) => {
+const Layout: React.FC<Props> = ({ children }: Props) => {
   return (
     <>
       <Header />

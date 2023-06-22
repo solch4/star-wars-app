@@ -2,14 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faVenusMars } from "@fortawesome/free-solid-svg-icons";
 import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
 
-type Props = {
+interface Props {
   id: string;
   name: string;
   eyeColor: string;
   gender: string;
 };
 
-const CharacterCard = ({ name, eyeColor, gender }: Props) => {
+const CharacterCard: React.FC<Props> = ({ name, eyeColor, gender }: Props) => {
   return (
     <article className="card">
       <div>

@@ -7,14 +7,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { toRoman } from "roman-numerals";
 
-type Props = {
+interface Props {
   id: string;
   title: string;
   episode: number;
   director: string;
 };
 
-const FilmCard = ({ id, title, episode, director }: Props) => {
+const FilmCard: React.FC<Props> = ({ id, title, episode, director }: Props) => {
   return (
     <article className="card">
       <div>
