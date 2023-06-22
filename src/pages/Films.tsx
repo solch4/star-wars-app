@@ -1,16 +1,8 @@
-import { useEffect } from "react";
-import { useAppSelector } from "../hooks/useAppSelector";
-import { useAppDispatch } from "../hooks/useAppDispatch";
-import { getFilms } from "../redux/actions/filmsActions";
+import { useFilms } from "../hooks/useFilms";
 import FilmCard from "../components/FilmCard";
 
 const Films = () => {
-  const dispatch = useAppDispatch();
-  const { films, error, loading } = useAppSelector((state) => state.films);
-
-  useEffect(() => {
-    dispatch(getFilms());
-  }, [dispatch]);
+  const { films, error, loading } = useFilms();
 
   if (error) return <h1>{error}</h1>;
   if (loading) return <h1>Loading films...</h1>;
