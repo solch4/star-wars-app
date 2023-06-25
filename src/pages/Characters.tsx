@@ -1,19 +1,13 @@
-import { useEffect, ChangeEvent, useState } from "react";
-import { useAppSelector } from "../hooks/useAppSelector";
-import { useParams } from "react-router-dom";
-import { useAppDispatch } from "../hooks/useAppDispatch";
-import { getCharacters } from "../redux/actions/charactersActions";
+import { ChangeEvent, useState } from "react";
+import { useCharacters } from "../hooks/useCharacters";
 import CharacterCard from "../components/CharacterCard";
 import FilterDropdown from "../components/FilterDropdown";
 
 type SelectElement = ChangeEvent<HTMLSelectElement>;
 
 const Characters = () => {
-  const { filmId } = useParams();
-  const dispatch = useAppDispatch();
-  const { characters, error, loading, genders, eyeColors, filmTitle } = useAppSelector(
-    (state) => state.characters
-  );
+  const { characters, error, loading, genders, eyeColors, filmTitle } =
+    useCharacters();
 
   const [selectedGender, setSelectedGender] = useState("");
   const [selectedEyeColor, setSelectedEyeColor] = useState("");
@@ -22,10 +16,6 @@ const Characters = () => {
     setSelectedEyeColor("");
     setSelectedGender("");
   };
-
-  useEffect(() => {
-    dispatch(getCharacters(filmId));
-  }, [dispatch, filmId]);
 
   if (error) return <h1>{error}</h1>;
   if (loading) return <h1>Loading characters...</h1>;
