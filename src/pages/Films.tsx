@@ -6,13 +6,15 @@ const Films = () => {
 
   if (error) return <h1>{error}</h1>;
   if (loading) return <h1>Loading films...</h1>;
+  if (!films.length) return null;
 
   return (
     <>
       <h1>Films</h1>
       <div className="cards">
-        {films.length &&
-          films.map((film) => <FilmCard key={film.id} {...film} />)}
+        {films.map((film) => (
+          <FilmCard key={film.id} {...film} />
+        ))}
       </div>
     </>
   );

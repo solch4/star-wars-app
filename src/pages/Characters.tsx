@@ -1,9 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { useCharacters } from "../hooks/useCharacters";
 import CharacterCard from "../components/CharacterCard";
 import FilterDropdown from "../components/FilterDropdown";
 
-type SelectElement = ChangeEvent<HTMLSelectElement>;
+type SelectElement = React.ChangeEvent<HTMLSelectElement>;
+type SetStringState = React.Dispatch<React.SetStateAction<string>>;
 
 const Characters = () => {
   const { characters, error, loading, genders, eyeColors, filmTitle } =
@@ -19,6 +20,7 @@ const Characters = () => {
 
   if (error) return <h1>{error}</h1>;
   if (loading) return <h1>Loading characters...</h1>;
+  if (!characters.length) return null;
 
   const filteredCharacters = characters.filter((character) => {
     // si no tengo o no coincide con selectedGender (mientras no quiera todos) => no lo agrego
@@ -41,6 +43,9 @@ const Characters = () => {
     return true;
   });
 
+  const handleChange = (fn: SetStringState) => (e: SelectElement) =>
+    fn(e.target.value);
+
   return (
     <>
       <h1>Characters in {filmTitle}</h1>
@@ -51,13 +56,13 @@ const Characters = () => {
             label="Gender"
             options={genders}
             value={selectedGender}
-            onChange={(e: SelectElement) => setSelectedGender(e.target.value)}
+            onChange={handleChange(setSelectedGender)}
           />
           <FilterDropdown
             label="Eye color"
             options={eyeColors}
             value={selectedEyeColor}
-            onChange={(e: SelectElement) => setSelectedEyeColor(e.target.value)}
+            onChange={handleChange(setSelectedEyeColor)}
           />
           <button
             className="characters-filters-clear-btn"
